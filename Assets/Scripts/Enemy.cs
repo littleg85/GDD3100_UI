@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
         {
             //Move toward island
             transform.LookAt(booty.transform);
-            rb.AddForce(transform.forward * var.enemySpeed);
+            rb.AddForce(transform.forward * var.enemySpeed * Time.deltaTime, ForceMode.Impulse);
 
             //Attack
             if (randAttack == 0 && Time.time > nextFire && dist <= 25f)
@@ -227,7 +227,7 @@ public class Enemy : MonoBehaviour
                 sinkPlayed = true;
             }
 
-            if (transform.position.y <= -50)
+            if (transform.position.y <= -10)
             {
                 Destroy(gameObject);
             }

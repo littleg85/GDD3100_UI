@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    private GameLogic gameLogic;
     private Rigidbody rb;
     private Variables var;
     public GameObject shadow;
+    public bool capsize = false;
 
     //Weapons
     public GameObject rockPrefab;
@@ -30,10 +32,7 @@ public class Player : MonoBehaviour {
 
         rb = GetComponent<Rigidbody>();
         var = GameObject.Find("Variables").GetComponent<Variables>();
-
-        //Hide cursor
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        gameLogic = GameObject.Find("GameUI").GetComponent<GameLogic>();
 
         //Hide children
         transform.GetChild(0).gameObject.SetActive(false);
@@ -79,19 +78,23 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (health > 0)
+        //Hide cursor
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        if (health > 0 && !capsize)
         {
             //Movement
             if (Input.GetKey(KeyCode.W))
             {
-                rb.velocity += transform.forward * var.speed;
-                //rb.AddForce(transform.forward * var.speed);
+                //rb.velocity += transform.forward * var.speed;
+                rb.AddForce(transform.forward * var.speed * Time.deltaTime, ForceMode.Impulse);
             }
 
             if (Input.GetKey(KeyCode.S))
             {
-                rb.velocity -= transform.forward * var.speed;
-                //rb.AddForce(-transform.forward * var.speed);
+                //rb.velocity -= transform.forward * var.speed;
+                rb.AddForce(-transform.forward * var.speed * Time.deltaTime, ForceMode.Impulse);
             }
 
             if (Input.GetKey(KeyCode.A))
@@ -107,11 +110,17 @@ public class Player : MonoBehaviour {
             //If boat is flipped, reset game.
             if (transform.rotation.eulerAngles.z >= 170f && transform.rotation.eulerAngles.z <= 190f)
             {
+                capsize = true;
                 StartCoroutine(Capsize());
+                if (!deadMenPlayed)
+                {
+                    deadMen.Play();
+                    deadMenPlayed = true;
+                }
             }
 
             //Play win sound
-            if (GameObject.Find("GameUI").GetComponent<GameUI>().gameWon == true)
+            if (gameLogic.gameWon)
             {
                 if (!winPlayed)
                 {
@@ -122,7 +131,6 @@ public class Player : MonoBehaviour {
         }
         else
         {
-
             //Play die sound and restart
             GetComponent<FloatingGameEntityRealist>().enabled = false;
             StartCoroutine(Sunk());

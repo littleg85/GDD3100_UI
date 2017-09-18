@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Variables : MonoBehaviour {
 
+    //Make script accessible
+    public static Variables var;
+
     //Gold earned
     public int booty = 0;
 
@@ -14,7 +17,7 @@ public class Variables : MonoBehaviour {
     //Health
     public int healthLevel = 0;
     //Utility
-    public float speed = 0f;
+    public int speed = 0;
     public int turnSpeed = 0;
     public float fireRate = 0.0f;
 

@@ -17,6 +17,7 @@ public class MenuUI : MonoBehaviour {
     public bool pSpeedClicked = false;
     public bool mobClicked = false;
     public bool diffClicked = false;
+    private Button play;
 
     private void Awake()
     {
@@ -25,15 +26,21 @@ public class MenuUI : MonoBehaviour {
 
     private void Start()
     {
+        //Remove Cursor
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        //Store play button
+        play = GameObject.Find("Play").GetComponent<Button>();
+
     }
 
     private void Update()
     {
+        //Activate Play button
         if (healthClicked && attackClicked && aSpeedClicked && pSpeedClicked && mobClicked && diffClicked)
         {
-            GameObject.Find("Play").GetComponent<Button>().interactable = true;
+            play.interactable = true;
         }
     }
 
@@ -116,19 +123,19 @@ public class MenuUI : MonoBehaviour {
     {
         if (EventSystem.current.currentSelectedGameObject.name == "pSpeed1")
         {
-            var.speed = 5;
+            var.speed = 40000;
             Debug.Log("Speed Level 1");
         }
 
         if (EventSystem.current.currentSelectedGameObject.name == "pSpeed2")
         {
-            var.speed = 7;
+            var.speed = 60000;
             Debug.Log("Speed Level 2");
         }
 
         if (EventSystem.current.currentSelectedGameObject.name == "pSpeed3")
         {
-            var.speed = .2f;
+            var.speed = 80000;
             Debug.Log("Speed Level 3");
         }
         pSpeedClicked = true;
