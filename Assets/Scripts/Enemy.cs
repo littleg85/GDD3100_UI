@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     private Rigidbody rb;
     private Variables var;
-    public GameObject booty;
+    private GameObject booty;
 
     //Weapons
     public GameObject rockPrefab;
@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         var = GameObject.Find("Variables").GetComponent<Variables>();
+        booty = GameObject.Find("Booty");
 
         //Hide children
         boatLevel0.SetActive(false);

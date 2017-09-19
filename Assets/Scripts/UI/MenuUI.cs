@@ -84,6 +84,7 @@ public class MenuUI : MonoBehaviour {
         if (EventSystem.current.currentSelectedGameObject.name == "Menu Button")
         {
             SceneManager.LoadScene("menu");
+            var.booty = 10000;
         }
     }
 
