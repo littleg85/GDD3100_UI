@@ -36,7 +36,10 @@ public class MenuUI : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
 
         //Store play button
-        play = GameObject.Find("Play").GetComponent<Button>();
+        if(SceneManager.GetActiveScene().name == "PostGame")
+        {
+            play = GameObject.Find("Play").GetComponent<Button>();
+        }
 
         //Instructions 
         inst = GameObject.Find("Instructions Canvas").GetComponent<Canvas>();

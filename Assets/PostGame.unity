@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ocean: {fileID: 2100000, guid: be1672567266e5f40a8a109aace4fdd4, type: 2}
-  sun: {fileID: 0}
+  sun: {fileID: 293307410}
 --- !u!1 &1889724484
 GameObject:
   m_ObjectHideFlags: 0
