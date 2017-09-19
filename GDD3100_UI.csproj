@@ -106,6 +106,8 @@
     <Compile Include="Assets\Scripts\UI\LoadMenu.cs" />
     <Compile Include="Assets\Scripts\UI\MenuText.cs" />
     <Compile Include="Assets\Scripts\UI\MenuUI.cs" />
+    <Compile Include="Assets\Scripts\UI\RewardButton.cs" />
+    <Compile Include="Assets\Scripts\UI\RewardUI.cs" />
     <Compile Include="Assets\Scripts\Variables.cs" />
     <Compile Include="Assets\Scripts\WakeGenerator.cs" />
   </ItemGroup>

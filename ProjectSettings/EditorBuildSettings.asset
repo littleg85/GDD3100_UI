@@ -14,3 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game1.unity
     guid: 326410aa902fc5e43bea561a7455df7a
+  - enabled: 1
+    path: Assets/PostGame.unity
+    guid: 62908edac3c7ec544ae1fc7f6bfdafc3
+  - enabled: 1
+    path: Assets/credits.unity
+    guid: 16a991feb6256454ab25b551c50b8564

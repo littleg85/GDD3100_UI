@@ -53,7 +53,6 @@ public class GameLogic : MonoBehaviour {
     IEnumerator GameWin()
     {
         yield return new WaitForSeconds(4.0f);
-        var.booty = 10000;
-        SceneManager.LoadScene("menu"); //Restart game after 4 seconds.
+        SceneManager.LoadScene("PostGame"); //Restart game after 4 seconds.
     }
 }

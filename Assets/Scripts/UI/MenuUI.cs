@@ -19,6 +19,11 @@ public class MenuUI : MonoBehaviour {
     public bool diffClicked = false;
     private Button play;
 
+    //Instructions
+    private Canvas inst;
+    private Canvas menuCanvas;
+    private bool instOn = false;
+
     private void Awake()
     {
         var = GameObject.Find("Variables").GetComponent<Variables>();
@@ -33,6 +38,11 @@ public class MenuUI : MonoBehaviour {
         //Store play button
         play = GameObject.Find("Play").GetComponent<Button>();
 
+        //Instructions 
+        inst = GameObject.Find("Instructions Canvas").GetComponent<Canvas>();
+        menuCanvas = GameObject.Find("Menu Canvas").GetComponent<Canvas>();
+        inst.enabled = false;
+
     }
 
     private void Update()
@@ -42,6 +52,22 @@ public class MenuUI : MonoBehaviour {
         {
             play.interactable = true;
         }
+
+        //Instructions Pause
+        if (Input.GetKeyDown(KeyCode.Escape) && !instOn)
+        {
+            Time.timeScale = 0;
+            inst.enabled = true;
+            menuCanvas.enabled = false;
+            instOn = true;
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && instOn)
+        {
+            Time.timeScale = 1;
+            inst.enabled = false;
+            menuCanvas.enabled = true;
+            instOn = false;
+        }
     }
 
     public void OnStartGame()
@@ -50,6 +76,14 @@ public class MenuUI : MonoBehaviour {
         {
             SceneManager.LoadScene("Game1");
             Debug.Log("Scene Loaded");
+        }
+    }
+
+    public void ReturnToMainMenu()
+    {
+        if (EventSystem.current.currentSelectedGameObject.name == "Menu Button")
+        {
+            SceneManager.LoadScene("menu");
         }
     }
 

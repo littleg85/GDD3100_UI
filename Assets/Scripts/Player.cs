@@ -299,15 +299,13 @@ public class Player : MonoBehaviour {
     IEnumerator Capsize()
     {
         yield return new WaitForSeconds(5.0f);
-        var.booty = 10000;
-        SceneManager.LoadScene("menu"); //Restart game after 3 seconds.
+        SceneManager.LoadScene("PostGame"); //Restart game after 5 seconds.
     }
 
     IEnumerator Sunk()
     {
         yield return new WaitForSeconds(5.0f);
-        var.booty = 10000;
-        SceneManager.LoadScene("menu"); //Restart game after 3 seconds.
+        SceneManager.LoadScene("PostGame"); //Restart game after 5 seconds.
     }
 
     private void OnTriggerEnter(Collider other)
